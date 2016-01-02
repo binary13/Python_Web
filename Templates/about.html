@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends "navtemp.html" %}
+{% block content %}
+
+<head>
+    <link href=" {{ url_for('static', filename='css/bootstrap.min.css') }} " rel="stylesheet" media="screen">
+    <meta charset="UTF-8">
+
+        <title>About this site</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>
+            <p>This page was created by Justinius Maximus Zelotes in Python and Flask, with styling in Bootstrap.</p>
+
+            <p>No, that is not my real name.</p>
+        </h3>
+    </div>
+
+</body>
+
+{% endblock %}
+
+</html>
