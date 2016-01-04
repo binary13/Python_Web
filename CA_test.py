@@ -17,4 +17,4 @@ for key in prices:
     print('You have {} {}s worth a total of ${:4.2f}'.format(stock[key], key, num))
     total += num
 
-print('The total worth of your inventory is ${:5.2f}.'.format(total))
+print('The total value of your inventory is ${:5.2f}.'.format(total))
