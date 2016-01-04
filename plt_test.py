@@ -1,13 +1,10 @@
 import matplotlib.pyplot as plt
 
-x = [1,2,3,4,5]
-y1 = [4,3,1,7,10]
-y2 = [5,6,9,21,76]
-plt.plot(x, y1, label='Europe')
-plt.plot(x, y2, label = "United States")
-plt.title("Recent Rain of Terror")
-plt.xlabel('Year since 1999')
-plt.ylabel('Alien Abductions')
-plt.legend()
+test_scores = [55, 60, 75, 80, 93, 76, 92, 41, 17, 75, 95, 82, 76]
+time_spent = [40, 45, 55, 60, 60, 54, 58, 22, 5, 36, 57, 50, 49]
+
+plt.scatter(time_spent, test_scores, marker='v', color="r")
+plt.xlabel('Time spent on test')
+plt.ylabel('Test Scores')
+
 plt.show()
-print('Got here.')
