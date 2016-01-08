@@ -10,14 +10,19 @@ def graph_data(stock):
     stock_data = []
     source_split = source_code.split('\n')
 
-    for line in source_split:
-        split_line = line.split(',')
+    for each_line in source_split:
+        split_line = each_line.split(',')
         if len(split_line) == 6:
-            if 'values:Date' not in split_line:
-                stock_data.append(split_line)
+            if 'values' not in each_line:
+                stock_data.append(each_line)
 
-    for d in stock_data:
-        print(d)
+    date, closep, highp, lowp, openp, volume = np.loadtxt(stock_data,
+                                                          delimiter=',',
+                                                          unpack=True,
+                                                          converters={0: mdates.bytespdate2num('%Y%m%d')})
+
+    plt.plot_date(date, closep, '-')
+    plt.show()
 
 stock = input('Stock to plot: ')
 graph_data(stock)
