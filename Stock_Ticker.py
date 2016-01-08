@@ -4,6 +4,8 @@ import urllib
 import numpy as np
 
 def graph_data(stock):
+    fig = plt.figure()
+    ax1 = plt.subplot2grid((1,1), (0,0))
     print('Currently pulling: ', stock)
     url = 'http://chartapi.finance.yahoo.com/instrument/1.0/'+stock+'/chartdata;type=quote;range=10y/csv'
     source_code = urllib.request.urlopen(url).read().decode()
@@ -21,8 +23,12 @@ def graph_data(stock):
                                                           unpack=True,
                                                           converters={0: mdates.bytespdate2num('%Y%m%d')})
 
+    for label in ax1.xaxis.get_ticklabels():
+        label.set_rotation(45)
+
     plt.plot_date(date, closep, '-')
+    ax1.grid(True)
     plt.show()
 
-stock = input('Stock to plot: ')
+stock = 'aapl'            ###input('Stock to plot: ')
 graph_data(stock)
