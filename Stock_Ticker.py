@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import matplotlib.ticker as mticker
+from matplotlib.finance import candlestick_ohlc
 import urllib
 import numpy as np
 import datetime as dt
@@ -11,7 +13,8 @@ def graph_data(stock):
     plt.ylabel('Price')
 
     print('Currently pulling: ', stock)
-    url = 'http://chartapi.finance.yahoo.com/instrument/1.0/'+stock+'/chartdata;type=quote;range=10y/csv'
+    url = 'http://chartapi.finance.yahoo.com/instrument/1.0/'+stock+'/chartdata;type=quote;range=1' \
+                                                                    'm/csv'
     source_code = urllib.request.urlopen(url).read().decode()
     stock_data = []
     source_split = source_code.split('\n')
@@ -22,31 +25,50 @@ def graph_data(stock):
             if 'values' not in each_line:
                 stock_data.append(each_line)
 
-    date, closep, highp, lowp, openp, volume = np.loadtxt(stock_data,
-                                                          delimiter=',',
-                                                          unpack=True,
-                                                          converters={0: mdates.bytespdate2num('%Y%m%d')})
+    def unpack(source):
+        # For datetime: when charting more than 1d
+        if 'values:Date' in source:
+            print("Date found")
+            return np.loadtxt(stock_data,
+                              delimiter=',',
+                              unpack=True,
+                              converters={0: mdates.bytespdate2num('%Y%m%d')})
 
-    # date, closep, highp, lowp, openp, volume = np.loadtxt(stock_data,
-    #                                                       delimiter=',',
-    #                                                       unpack=True)
-    #
-    # date_conv = np.vectorize(dt.datetime.fromtimestamp)
-    # date = date_conv(date)
+        # For Unix time codes: when charting 1d
+        elif 'values:Time' in source:
+            print("Time found")
+            date, closep, highp, lowp, openp, volume = np.loadtxt(stock_data,
+                                                                  delimiter=',',
+                                                                  unpack=True)
+            date_conv = np.vectorize(dt.datetime.fromtimestamp)
+            date = date_conv(date)
+            return date, closep, highp, lowp, openp, volume
+        else: return "Date or Time not found"
+
+    date, closep, highp, lowp, openp, volume = unpack(source_code)
+
+    x = 0
+    y = len(date)
+    new_list = []
+
+    for x in range(y):
+        append_line = date[x], openp[x], highp[x], lowp[x], closep[x], volume[x]
+        new_list.append(append_line)
 
 
-    ax1.plot_date(date, closep, '-')
-    ax1.fill_between(date, closep, 70, where=(closep >= 70), facecolor='g', alpha=0.8)
-    ax1.fill_between(date, closep, 70, where=(closep <= 70), facecolor='r', alpha=0.8)
+    # ax1.plot_date(date, closep, '-')
+
+    candlestick_ohlc(ax1, new_list, width=.8, colorup='g', colordown='r')
+
+    ax1.xaxis.set_major_locator(mticker.MaxNLocator(10))
+    ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
     ax1.grid(True)
-    ax1.yaxis.label.set_color('m')
-    ax1.xaxis.label.set_color('c')
+
     for label in ax1.xaxis.get_ticklabels():
         label.set_rotation(45)
 
-
-    plt.subplots_adjust(left=.09, bottom=.16, right=.94, top=.95, wspace=.2, hspace=.2)
+    plt.subplots_adjust(left=.09, bottom=.20, right=.94, top=.95, wspace=.2, hspace=.2)
     plt.show()
 
-stock = 'xom'            ###input('Stock to plot: ')
+stock = 'xom'            ###input('Stock to plot: ') ### Hardcoded to avoid having to type in a symbol each run
 graph_data(stock)
