@@ -3,10 +3,6 @@ print("Let's play tic-tac-toe!")
 print("**********************************")
 print("\n")
 
-setup()
-main_loop()
-victory()
-
 def setup():
     '''
         Setup - asks for player names and assigns to a dictionary
@@ -24,3 +20,8 @@ def victory():
     '''
         Victory - declares a winner
     '''
+
+
+setup()
+main_loop()
+victory()
