@@ -1,3 +1,6 @@
+import random
+
+
 print("***************************************")
 print("****    Let's play tic-tac-toe!    ****")
 print("***************************************")
@@ -35,7 +38,7 @@ def print_board():
 
 def setup():
     '''
-        Setup - asks for player names and assigns to a dictionary of players
+        Setup - asks for player names and assigns to a list of players
     '''
     players[0].name = input("Player one, enter your name: ")
     players[0].symbol = " "+players[0].name[0]
@@ -49,16 +52,29 @@ def setup():
 
 def check_victory():
     '''
-        Victory - declares a winner
+        Checks to see if a player has won the game
     '''
 
-def check_legal(move):
-    legal = False
+    #Horizontal
     for row in range(3):
-        for cell in range(3):
-            if board[row][cell] == move:
-                legal = True
-    return legal
+        if board[row][0]==board[row][1]==board[row][2]:
+            return True
+
+    #Vertical
+    for col in range(3):
+        if board[0][col]==board[1][col]==board[2][col]:
+            return True
+
+    #Diagonal
+    if board[0][0]==board[1][1]==board[2][2]:
+        return True
+    if board[2][0]==board[1][1]==board[0][2]:
+        return True
+
+    #Default
+    return False
+
+
 
 def main_loop():
     '''
@@ -66,16 +82,18 @@ def main_loop():
     '''
 
     print_board()
-    player_num = 0
-    for move in range(1,5):
-        player_move = input(players[player_num].name+", where would you like to place your token? ")
+    player_num = random.randint(0,1)
+    for move in range(1,10):
+        player_move = (input(players[player_num].name+", where would you like to place your token? ")).upper()
+        legal = False
 
-        if check_legal(player_move):
-            for row in range(3):
-                for cell in range(3):
-                    if board[row][cell] == player_move:
-                        board[row][cell] = players[player_num].symbol
-                        print_board()
+        for row in range(3):
+            for cell in range(3):
+                if board[row][cell] == player_move:
+                    legal = True
+                    board[row][cell] = players[player_num].symbol
+        if legal:
+            print_board()
         else:
             print("Not a legal move!")
             print("Quitting.")
@@ -85,9 +103,10 @@ def main_loop():
             print("Congratulations, "+players[player_num].name+"! You won!")
             break
         else:
-            player_num = (player_num + 1) % 2
-
-
+            if move == 9:
+                print("Cat got the game!")
+            else:
+                player_num = (player_num + 1) % 2
 
 
 
