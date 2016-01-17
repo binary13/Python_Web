@@ -81,7 +81,7 @@ class Player(object):
 
 class Dealer(Player):
 
-    def __init__(self, name="Dealer", money=1000000, cards = []):
+    def __init__(self, name="Dealer", money=0, cards = []):
         self.name = name
         self.money = money
         self.cards = cards
@@ -97,27 +97,92 @@ class Dealer(Player):
         return str(self.cards[0])
 
 
+def bust(player):
+    if player.cards_value() > 21:
+        return True
+    else:
+        return False
+
 
 deck = Deck()
 shuffle(deck.cards)
-print(deck)
 
 player = Player()
-player.cards.append(deck.give_card())
-player.cards.append(deck.give_card())
-print("Player has:", player.show_cards())
-print("The value of player's hand is", player.cards_value())
-
 dealer = Dealer()
-dealer.cards.append(deck.give_card())
-dealer.cards.append(deck.give_card())
-print("Dealer's public cards:", dealer.show_cards())
-print("Dealer's hole card:", dealer.show_hole_card())
-print("The value of dealer's hand is", dealer.cards_value())
 
-if player.cards_value() > dealer.cards_value():
-    print("Player wins!")
-elif dealer.cards_value() > player.cards_value():
-    print("Dealer wins.")
-else:
-    print("It was a tie.")
+while True:
+    print("\n")
+    print("You have ${}.".format(player.money))
+
+    bet = 0
+
+    while True:
+        try:
+            bet = int(input("How much will you bet? "))
+        except:
+            print("Invalid input! Try again.")
+        if bet <= player.money:
+            break
+        else:
+            print("You don't have that much! Choose a lower bet.")
+
+    print("\n")
+
+    player.cards.append(deck.give_card())
+    player.cards.append(deck.give_card())
+
+    dealer.cards.append(deck.give_card())
+    dealer.cards.append(deck.give_card())
+
+    while not bust(player):
+        print("You have:", player.show_cards())
+        print("Your hand is worth {} points.".format(player.cards_value()))
+        print("Dealer has:", dealer.show_cards())
+        action = input("Would you like to: [h]it, [s]tand, or su[r]render? ")
+
+        if action.lower() in ['hit', 'h']:
+            player.cards.append(deck.give_card())
+        if action.lower() in ['stand', 's']:
+            print("Dealer's hole card:", dealer.show_hole_card())
+            print("Dealer's hand is worth {} points.".format(dealer.cards_value()))
+            while dealer.cards_value() < 17:
+                print("Dealer hits.")
+                dealer.cards.append(deck.give_card())
+                print("Dealer has:", super(Dealer, dealer).show_cards())
+                print("Dealer's hand is worth {} points.".format(dealer.cards_value()))
+            if bust(dealer):
+                print("Dealer busts! You win!")
+                print("You win ${}.".format(bet))
+                player.money += bet
+                break
+            elif player.cards_value() > dealer.cards_value():
+                print("You win!")
+                print("You win ${}.".format(bet))
+                player.money += bet
+                break
+            elif player.cards_value() < dealer.cards_value():
+                print("You lose.")
+                print("You lose ${}.".format(bet))
+                player.money -= bet
+                break
+            else:
+                print("Push. You keep your bet.")
+                break
+        if action.lower() in ['surrender', 'r']:
+            print("You surrender. You lose half of your bet.")
+            print("You lose ${}.".format(bet))
+            player.money -= bet/2
+            break
+    else:
+        print("You busted!")
+        print("You have:", player.show_cards())
+        print("Your hand is worth {} points.".format(player.cards_value()))
+        print("You lose ${}.".format(bet))
+        player.money -= bet
+
+    if input("Would you like to play again?").lower() not in ['yes', 'y']:
+        print("OK! Thanks for playing!")
+        break
+    else:
+        player.cards = []
+        dealer.cards = []
