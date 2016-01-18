@@ -108,6 +108,11 @@ shuffle(deck.cards)
 player = Player()
 dealer = Dealer()
 
+print("Let's play blackjack!")
+print("The object of the game is to get as close \nto 21 as possible, without going over.")
+print("Are you ready?")
+
+
 while True:
     print("\n")
     print("You have ${}.".format(player.money))
