@@ -114,6 +114,8 @@ print("Are you ready?")
 
 
 while True:
+    if len(deck.cards) < 10:
+        deck = Deck()
     print("\n")
     print("You have ${}.".format(player.money))
 
@@ -201,7 +203,7 @@ while True:
         print("Looks like you're out of money. Bye!")
         break
 
-    if input("\nWould you like to play again? ").lower() not in ['yes', 'y']:
+    if input("\nWould you like to play again? ").lower() not in ['yes', 'y', ""]:
         print("OK! Thanks for playing!")
         break
     else:
