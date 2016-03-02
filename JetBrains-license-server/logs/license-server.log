@@ -1,0 +1,9 @@
+[2015-12-21 07:42:42,462]   INFO -     org.eclipse.jetty.util.log - Logging initialized @382ms 
+[2015-12-21 07:42:42,594]   INFO - rg.eclipse.jetty.server.Server - jetty-9.2.10.v20150310 
+[2015-12-21 07:42:43,700]   INFO - .server.handler.ContextHandler - Started o.e.j.w.WebAppContext@57a40a9f{/,file:/home/justin/JetBrains-license-server/web/,AVAILABLE} 
+[2015-12-21 07:42:43,723]   INFO - e.jetty.server.ServerConnector - Started ServerConnector@2e0b410a{HTTP/1.1}{0.0.0.0:8080} 
+[2015-12-21 07:42:43,723]   INFO - rg.eclipse.jetty.server.Server - Started @1656ms 
+[2015-12-21 07:42:43,725]   INFO - service.LsFloatingJettyService - JetBrains License Service is listening on {0.0.0.0:8080} 
+[2015-12-21 07:43:24,942]   INFO - service.LsFloatingJettyService - Stopping JetBrains License Service 
+[2015-12-21 07:43:24,947]   INFO - e.jetty.server.ServerConnector - Stopped ServerConnector@2e0b410a{HTTP/1.1}{0.0.0.0:8080} 
+[2015-12-21 07:43:24,953]   INFO - .server.handler.ContextHandler - Stopped o.e.j.w.WebAppContext@57a40a9f{/,file:/home/justin/JetBrains-license-server/web/,UNAVAILABLE} 

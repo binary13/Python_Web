@@ -1,0 +1,5 @@
+[2015-12-21 07:42:42,013] ================================================================ (start)
+[2015-12-21 07:42:43,148] [JetBrains License Service Error] log4j:WARN No appenders could be found for logger (kara.config.Config).
+[2015-12-21 07:42:43,149] [JetBrains License Service Error] log4j:WARN Please initialize the log4j system properly.
+[2015-12-21 07:42:43,149] [JetBrains License Service Error] log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[2015-12-21 07:43:24,984] ================================================================ (finish)

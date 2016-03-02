@@ -1,0 +1,56 @@
+[2015-12-21 07:40:35,662]  TRACE -                           root - [configure] ================================================================ (start)
+[2015-12-21 07:40:35,697]  DEBUG - launcher.ep.commands.Configure - [configure] Using Java: /usr/lib/jvm/java-7-openjdk-amd64/jre (version "1.7.0_91")
+[2015-12-21 07:40:35,697]  DEBUG - launcher.ep.commands.Configure - [configure] JetBrains License Service home directory: /home/justin/JetBrains-license-server
+[2015-12-21 07:40:35,697]  DEBUG - launcher.ep.commands.Configure - [configure] Command line: [configure]
+[2015-12-21 07:40:35,698]  DEBUG - launcher.ep.commands.Configure - [configure] JetLauncher version: 0.6.419
+[2015-12-21 07:40:35,699]  DEBUG - launcher.ep.commands.Configure - [configure] Loaded launcher plugins: [ConfPathProvider]
+[2015-12-21 07:40:35,699]  DEBUG - launcher.ep.commands.Configure - [configure] JetBrains License Service config folder: <JetBrains License Service Home>/conf
+[2015-12-21 07:40:35,702]  DEBUG - .BaseLauncherConfig$BaseParser - [configure] Using launcher configuration file: jar:file:<JetBrains License Service Home>/launcher/lib/launcher.jar!/launcher.java.config
+[2015-12-21 07:40:35,711]  DEBUG - uncher.ep.commands.BaseCommand - [configure] Wrong arguments: [configure]
+[2015-12-21 07:42:41,285]  TRACE -                           root - [start] ================================================================ (start)
+[2015-12-21 07:42:41,311]  DEBUG - ins.launcher.ep.commands.Start - [start] Using Java: /usr/lib/jvm/java-7-openjdk-amd64/jre (version "1.7.0_91")
+[2015-12-21 07:42:41,312]  DEBUG - ins.launcher.ep.commands.Start - [start] JetBrains License Service home directory: /home/justin/JetBrains-license-server
+[2015-12-21 07:42:41,312]  DEBUG - ins.launcher.ep.commands.Start - [start] Command line: [start]
+[2015-12-21 07:42:41,313]  DEBUG - ins.launcher.ep.commands.Start - [start] JetLauncher version: 0.6.419
+[2015-12-21 07:42:41,313]  DEBUG - ins.launcher.ep.commands.Start - [start] Loaded launcher plugins: [ConfPathProvider]
+[2015-12-21 07:42:41,313]  DEBUG - ins.launcher.ep.commands.Start - [start] JetBrains License Service config folder: <JetBrains License Service Home>/conf
+[2015-12-21 07:42:41,323]  DEBUG - .BaseLauncherConfig$BaseParser - [start] Using launcher configuration file: jar:file:<JetBrains License Service Home>/launcher/lib/launcher.jar!/launcher.java.config
+[2015-12-21 07:42:41,362]  DEBUG - launcher.util.LauncherExecutor - [start] Starting launcher process with command: [/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java, -Djl.service=JetBrains License Service Launcher, -Djl.home=/home/justin/JetBrains-license-server, -ea, -Xmx5m, -XX:+HeapDumpOnOutOfMemoryError, -Dfile.encoding=UTF-8, -XX:MaxPermSize=3m, -jar, launcher/lib/launcher.jar, Main, do, start] (at path: "/home/justin/JetBrains-license-server", system properties: {java.awt.headless=true})
+[2015-12-21 07:42:41,826]  TRACE -                           root - ================================================================ (start)
+[2015-12-21 07:42:41,864]  DEBUG - rains.launcher.ep.commands.Run - Using Java: /usr/lib/jvm/java-7-openjdk-amd64/jre (version "1.7.0_91")
+[2015-12-21 07:42:41,864]  DEBUG - rains.launcher.ep.commands.Run - JetBrains License Service home directory: /home/justin/JetBrains-license-server
+[2015-12-21 07:42:41,864]  DEBUG - rains.launcher.ep.commands.Run - Command line: [do, start]
+[2015-12-21 07:42:41,865]  DEBUG - rains.launcher.ep.commands.Run - JetLauncher version: 0.6.419
+[2015-12-21 07:42:41,866]  DEBUG - rains.launcher.ep.commands.Run - Loaded launcher plugins: [ConfPathProvider]
+[2015-12-21 07:42:41,866]  DEBUG - rains.launcher.ep.commands.Run - JetBrains License Service config folder: <JetBrains License Service Home>/conf
+[2015-12-21 07:42:41,877]  DEBUG - .BaseLauncherConfig$BaseParser - Using launcher configuration file: jar:file:<JetBrains License Service Home>/launcher/lib/launcher.jar!/launcher.java.config
+[2015-12-21 07:42:41,934]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/update
+[2015-12-21 07:42:41,948]   INFO - rains.launcher.ep.commands.Run - Starting JetBrains License Service...
+[2015-12-21 07:42:41,967]  DEBUG - ains.launcher.run.AgentProcess - Mon Dec 21 07:42:41 EST 2015 ==> Start launch
+[2015-12-21 07:42:41,970]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.pid
+[2015-12-21 07:42:41,970]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.port
+[2015-12-21 07:42:41,970]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.exit.flag
+[2015-12-21 07:42:41,993]  DEBUG - tbrains.launcher.run.JavaAgent - Launching JetBrains License Service process with command: [/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java, -Djl.service=JetBrains License Service, -Djl.home=/home/justin/JetBrains-license-server, -ea, -XX:+HeapDumpOnOutOfMemoryError, -XX:HeapDumpPath=logs, -XX:ErrorFile=logs/hs_err_pid%p.log, -Dfile.encoding=UTF-8, -XX:MaxPermSize=250m, -Xmx1024m, -Dorg.eclipse.jetty.server.Request.maxFormContentSize=5000000, -Dorg.eclipse.jetty.server.Request.maxFormKeys=10000, -jar, launcher/lib/app-wrapper/app-wrapper.jar, AppStarter, com.jetbrains.ls.floating.service.LsFloatingJetLauncherServiceImpl] (at path: "/home/justin/JetBrains-license-server", system properties: {launcher.app.conf.dir=/home/justin/JetBrains-license-server/conf, launcher.app.home=/home/justin/JetBrains-license-server, java.awt.headless=true})
+[2015-12-21 07:42:43,737]   INFO - ins.launcher.ep.commands.Start - [start] JetBrains License Service is running
+[2015-12-21 07:42:43,739]  TRACE -                           root - [start] ================================================================ (finish)
+[2015-12-21 07:43:24,833]  TRACE -                           root - [stop] ================================================================ (start)
+[2015-12-21 07:43:24,858]  DEBUG - ains.launcher.ep.commands.Stop - [stop] Using Java: /usr/lib/jvm/java-7-openjdk-amd64/jre (version "1.7.0_91")
+[2015-12-21 07:43:24,858]  DEBUG - ains.launcher.ep.commands.Stop - [stop] JetBrains License Service home directory: /home/justin/JetBrains-license-server
+[2015-12-21 07:43:24,858]  DEBUG - ains.launcher.ep.commands.Stop - [stop] Command line: [stop]
+[2015-12-21 07:43:24,859]  DEBUG - ains.launcher.ep.commands.Stop - [stop] JetLauncher version: 0.6.419
+[2015-12-21 07:43:24,860]  DEBUG - ains.launcher.ep.commands.Stop - [stop] Loaded launcher plugins: [ConfPathProvider]
+[2015-12-21 07:43:24,860]  DEBUG - ains.launcher.ep.commands.Stop - [stop] JetBrains License Service config folder: <JetBrains License Service Home>/conf
+[2015-12-21 07:43:24,867]  DEBUG - .BaseLauncherConfig$BaseParser - [stop] Using launcher configuration file: jar:file:<JetBrains License Service Home>/launcher/lib/launcher.jar!/launcher.java.config
+[2015-12-21 07:43:24,976]   INFO - ains.launcher.run.AgentProcess - JetBrains License Service process finished
+[2015-12-21 07:43:24,981]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.pid
+[2015-12-21 07:43:24,983]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.port
+[2015-12-21 07:43:24,983]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.exit.flag
+[2015-12-21 07:43:24,984]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.pid
+[2015-12-21 07:43:24,984]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.port
+[2015-12-21 07:43:24,984]  DEBUG - ins.launcher.util.LauncherUtil - Deleting <JetBrains License Service Home>/logs/license-server.exit.flag
+[2015-12-21 07:43:24,985]  DEBUG - rains.launcher.run.AgentRunner - JetBrains License Service has exited with code: 30
+[2015-12-21 07:43:24,985]  DEBUG - rains.launcher.run.AgentRunner - Exit flag is set, launcher is exiting
+[2015-12-21 07:43:24,986]   INFO - rains.launcher.run.AgentRunner - Launcher is exiting
+[2015-12-21 07:43:24,987]  TRACE -                           root - ================================================================ (finish)
+[2015-12-21 07:43:25,269]   INFO - ains.launcher.ep.commands.Stop - [stop] JetBrains License Service has shut down
+[2015-12-21 07:43:25,273]  TRACE -                           root - [stop] ================================================================ (finish)

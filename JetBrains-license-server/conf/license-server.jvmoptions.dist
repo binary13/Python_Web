@@ -1,0 +1,45 @@
+## This file contains additional JetBrains License Service JVM options.
+## To edit it please first copy it to the "license-server.jvmoptions" file.
+## Each option must be on a separate line; empty lines are ignored.
+## Use "#" at the begin of the line to comment it.
+##
+## Use "*D" instead of "-D" to not pass the specified system property explicitly via the command-line,
+## but to set it implicitly from inside the JetBrains License Service process via System#setProperty().
+##
+## Use "+" instead of "-" or "*" at the begin of the option to remove it (can be used to remove a default option).
+## "+<option>:<value>", "+XX:<option>=<value>" and "+D<property>=<value>" remove the corresponding option only if it
+## has exactly the same value, while "+<option>", "+XX:<option>" and "+D<property>" remove it regardless of the value.
+##
+## Use "@" to define the aliases. For example, after defining the alias "@devMode=-Ddev.mode=true" you can use
+## it like "-devMode" (will be expanded to "-Ddev.mode=true") or "+devMode" (will be expanded to "+Ddev.mode").
+## To remove the alias define it without the value: "@devMode".
+##
+## Any option can be wrapped with double quotes to avoid space trimming at the line end.
+##----------------------------------------------------------------------------------------------------------------------
+
+## Here is the list of the default (pre-defined) JetBrains License Service JVM option aliases.
+## To change the default alias either uncomment the corresponding line or add an overriding alias below.
+#@debug=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=%DEBUG_PORT%
+#@yourkit=-agentpath:%YOURKIT_AGENT_LIBRARY_PATH%=port=%YOURKIT_AGENT_PORT%,sessionname=license-server,dir=%APP_LOGS_DIR%,logdir=%APP_LOGS_DIR%
+
+## Here is the list of the default (pre-defined) JetBrains License Service JVM options.
+## To change the default option either uncomment the corresponding line or add an overriding option below.
+#-ea
+#-XX:+HeapDumpOnOutOfMemoryError
+#-XX:HeapDumpPath=%APP_LOGS_DIR%
+#-XX:ErrorFile=%APP_LOGS_DIR%%FILE_SEPARATOR%hs_err_pid%%p.log
+#-Dfile.encoding=UTF-8
+#*Djava.awt.headless=true
+#-XX:MaxPermSize=250m
+#-XX:MaxMetaspaceSize=250m
+#-Xmx1024m
+#-Dorg.eclipse.jetty.server.Request.maxFormContentSize=5000000
+#-Dorg.eclipse.jetty.server.Request.maxFormKeys=10000
+
+## Uncomment the following line to run JetBrains License Service with enabled debug
+## You can also just run the "configure -J-debug" command of the JetBrains License Service script
+#-debug
+
+## Uncomment the following line to run JetBrains License Service with enabled YourKit profiling ("yourkit-home" property must be specified)
+## You can also just run the "configure -J-yourkit" command of the JetBrains License Service script
+#-yourkit
